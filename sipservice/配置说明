@@ -1,0 +1,20 @@
+
+
+此3处必修改，不然无法使用。
+
+1、修改此处。设置用户代理
+//  epConfig.getUaConfig().setUserAgent(AGENT_NAME);
+epConfig.getUaConfig().setUserAgent("cloudrtc");
+
+2、修改此处。取消加密限制
+//    private int srtpUse = pjmedia_srtp_use.PJMEDIA_SRTP_OPTIONAL;
+    private int srtpUse = pjmedia_srtp_use.PJMEDIA_SRTP_DISABLED;
+
+
+3、修改此处。 包名修改为当前应用的包名
+<queries>
+            <!-- Your consumer app package id -->
+            <!-- Should be set in your app build.gradle file -->
+            <!-- e.g. manifestPlaceholders = [consumerAppId:"my.application.id"] -->
+            <package android:name="com.legrand.app" />
+</queries>
