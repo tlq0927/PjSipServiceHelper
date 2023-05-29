@@ -44,6 +44,8 @@ public class SipServiceCommand implements SipServiceConstants {
         String accountID = sipAccount.getIdUri();
         checkAccount(accountID);
 
+        removeAccount(context,accountID); // org.pjsip.pjsua2.Account.setRegistration  这报异常，所以直接清理掉数据，从新登录
+
         Intent intent = new Intent(context, SipService.class);
         intent.setAction(ACTION_SET_ACCOUNT);
         intent.putExtra(PARAM_ACCOUNT_DATA, sipAccount);
